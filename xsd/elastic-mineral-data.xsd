@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://xml.sorensen.biz/elastic-mineral-data" targetNamespace="http://xml.sorensen.biz/elastic-mineral-data" elementFormDefault="qualified">
+	<xsd:simpleType name="index4Type">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="1"/>
+			<xsd:maxInclusive value="4"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="index6Type">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="1"/>
+			<xsd:maxInclusive value="6"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="mineralDensityModeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="measured"/>
+			<xsd:enumeration value="estimated"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="densityUnitType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="kg/m3"/>
+			<xsd:enumeration value="g/cm3"/>
+			<xsd:enumeration value="g/cc"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="pressureUnitType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Mbar"/>
+			<xsd:enumeration value="1/Mbar"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="mineralDataType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="elastic-compliance"/>
+			<xsd:enumeration value="elastic-stiffness"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="mineralNameType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="short" type="xsd:string" use="required"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="mineralDescriptionType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="mineralDensityType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:decimal">
+				<xsd:attribute name="mode" type="mineralDensityModeType" use="required"/>
+				<xsd:attribute name="unit" type="densityUnitType" use="required"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!--
+	<xsd:complexType name="mineralComplianceDataEntryType">
+	-->
+	<xsd:complexType name="mineralDataEntryType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:decimal">
+				<xsd:attribute name="i" type="index6Type" use="required"/>
+				<xsd:attribute name="j" type="index6Type" use="required"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="mineralDataGroupType">
+		<xsd:sequence>
+			<xsd:element name="s" type="mineralDataEntryType" minOccurs="0" maxOccurs="21"/>
+			<xsd:element name="c" type="mineralDataEntryType" maxOccurs="21"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="mineralDataType" use="required"/>
+		<xsd:attribute name="unit" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<!--
+	<xsd:complexType name="mineralComplianceDataGroupType">
+		<xsd:sequence>
+			<xsd:element name="c" type="mineralComplianceDataEntryType" maxOccurs="21"/>
+		</xsd:sequence>
+		<xsd:attribute name="unit" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="mineralStiffnessDataGroupType">
+		<xsd:sequence>
+			<xsd:element name="s" type="mineralComplianceDataEntryType" maxOccurs="21"/>
+			<xsd:element name="c" type="mineralComplianceDataEntryType" maxOccurs="21"/>
+		</xsd:sequence>
+		<xsd:attribute name="unit" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	-->
+	<xsd:complexType name="mineralSourceType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="mineralCommentsType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:element name="mineral">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="name" type="mineralNameType"/>
+				<xsd:element name="description" type="mineralDescriptionType" minOccurs="0"/>
+				<xsd:element name="density" type="mineralDensityType"/>
+				<xsd:element name="data" type="mineralDataGroupType" maxOccurs="2"/>
+				<!--
+				<xsd:element name="c-group" type="mineralComplianceDataGroupType"/>
+				<xsd:element name="s-group" type="mineralStiffnessDataGroupType" minOccurs="0"/>
+				-->
+				<xsd:element name="source" type="mineralSourceType"/>
+				<xsd:element name="comments" type="mineralCommentsType" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

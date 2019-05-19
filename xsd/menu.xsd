@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://sorensen.biz/menu" targetNamespace="http://sorensen.biz/menu" elementFormDefault="qualified">
+  <xsd:element name="menu" type="menuOrLinkType"/>
+  <xsd:complexType name="linkType">
+    <xsd:attribute name="id" type="xsd:string" use="required"/>
+    <xsd:attribute name="label" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType name="menuOrLinkType">
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:element name="menu" type="menuOrLinkType"/>
+      <xsd:element name="link" type="linkType"/>
+    </xsd:choice>
+    <xsd:attribute name="id" type="xsd:string" use="required"/>
+    <xsd:attribute name="label" type="xsd:string" use="required"/>
+  </xsd:complexType>
+</xsd:schema>

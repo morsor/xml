@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://sorensen.biz/page" targetNamespace="http://sorensen.biz/page" elementFormDefault="qualified">
+  <xsd:element name="page">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="infobox" type="infoboxType" minOccurs="0" maxOccurs="unbounded"/>
+        <xsd:element name="body" type="pageBodyType"/>
+      </xsd:sequence>
+      <xsd:attribute name="id" type="xsd:string" use="required"/>
+      <xsd:attribute name="name" type="xsd:string" use="required"/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="mixedContentType">
+    <xsd:sequence>
+      <xsd:element name="caption" type="htmlStringType" maxOccurs="unbounded"/>
+      <xsd:element name="content" type="htmlStringType" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="infoboxType">
+    <xsd:complexContent>
+      <xsd:extension base="mixedContentType">
+        <xsd:attribute name="id" type="xsd:string" use="required"/>
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="pageBodyType">
+    <xsd:complexContent>
+      <xsd:extension base="mixedContentType">
+        <xsd:sequence>
+          <xsd:element name="application" type="idType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="align" type="alignmentType" use="optional"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="htmlStringType" mixed="true">
+    <xsd:sequence>
+      <xsd:any namespace="##any" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="idType">
+    <xsd:attribute name="id" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:simpleType name="alignmentType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="left"/>
+      <xsd:enumeration value="center"/>
+      <xsd:enumeration value="right"/>
+      <xsd:enumeration value="justify"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

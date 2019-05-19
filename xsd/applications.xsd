@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.morsor.dk/application" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.morsor.dk/application">
+  <xsd:element name="applications">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="application" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="description" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="actions" minOccurs="0">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="action" minOccurs="0" maxOccurs="unbounded">
+                      <xsd:complexType>
+                        <xsd:attribute name="name" type="xsd:string" use="required"/>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+            <xsd:attribute name="name" type="xsd:string" use="required"/>
+            <xsd:attribute name="enabled" type="boolean" use="optional"/>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:simpleType name="boolean">
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="true"/>
+      <xsd:enumeration value="false"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>
