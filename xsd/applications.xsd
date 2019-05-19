@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema targetNamespace="http://www.morsor.dk/application" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.morsor.dk/application">
+<xsd:schema targetNamespace="https://morsor.github.io/xml/xsd/application.xsd" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://morsor.github.io/xml/xsd/application.xsd">
   <xsd:element name="applications">
     <xsd:complexType>
       <xsd:sequence>
@@ -21,7 +21,7 @@
             </xsd:sequence>
             <xsd:attribute name="id" type="xsd:string" use="required"/>
             <xsd:attribute name="name" type="xsd:string" use="required"/>
-            <xsd:attribute name="enabled" type="boolean" use="optional"/>
+            <xsd:attribute name="enabled" type="xsd:boolean" use="optional"/>
           </xsd:complexType>
         </xsd:element>
       </xsd:sequence>

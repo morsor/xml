@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://sorensen.biz/page" targetNamespace="http://sorensen.biz/page" elementFormDefault="qualified">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="https://morsor.github.io/xml/xsd/page.xsd" targetNamespace="https://morsor.github.io/xml/xsd/page.xsd" elementFormDefault="qualified">
   <xsd:element name="page">
     <xsd:complexType>
       <xsd:sequence>

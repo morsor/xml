@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.1" exclude-result-prefixes="page menu" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" xmlns:page="http://sorensen.biz/page" xmlns:menu="http://sorensen.biz/menu">
+<xsl:stylesheet version="1.1" exclude-result-prefixes="page menu" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" xmlns:page="https://morsor.github.io/xml/xsd/page.xsd" xmlns:menu="https://morsor.github.io/xml/xsd/menu.xsd">
 
 <xsl:output method="xml" omit-xml-declaration="no" doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" /> 
 
