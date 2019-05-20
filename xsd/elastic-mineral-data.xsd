@@ -78,7 +78,6 @@
 			<xsd:element name="s" type="mineralDataEntryType" minOccurs="0" maxOccurs="21"/>
 			<xsd:element name="c" type="mineralDataEntryType" maxOccurs="21"/>
 		</xsd:sequence>
-		<xsd:attribute name="id" type="mineralDataType" use="required"/>
 		<xsd:attribute name="unit" type="xsd:string" use="required"/>
 	</xsd:complexType>
 	<!--
