@@ -112,7 +112,8 @@
 				<xsd:element name="name" type="mineralNameType"/>
 				<xsd:element name="description" type="mineralDescriptionType" minOccurs="0"/>
 				<xsd:element name="density" type="mineralDensityType"/>
-				<xsd:element name="data" type="mineralDataGroupType" maxOccurs="2"/>
+				<xsd:element name="elastic-stiffness" type="mineralDataGroupType" />
+                <xsd:element name="elastic-compliance" type="mineralDataGroupType" minOccurs="0" />
 				<!--
 				<xsd:element name="c-group" type="mineralComplianceDataGroupType"/>
 				<xsd:element name="s-group" type="mineralStiffnessDataGroupType" minOccurs="0"/>
