@@ -2,7 +2,9 @@
 <xsd:schema
 		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 		xmlns="https://morsor.github.io/xml/xsd/elastic-mineral-data.xsd"
-		targetNamespace="https://morsor.github.io/xml/xsd/elastic-mineral-data.xsd">
+		targetNamespace="https://morsor.github.io/xml/xsd/elastic-mineral-data.xsd"
+        elementFormDefault="qualified"
+        attributeFormDefault="qualified">
 	<xsd:simpleType name="index4Type">
 		<xsd:restriction base="xsd:integer">
 			<xsd:minInclusive value="1"/>
